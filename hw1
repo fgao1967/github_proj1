@@ -1,0 +1,49 @@
+
+---
+title: Activity analysis
+author: Feng Gao
+date: March 22, 2021
+output: html_document
+---
+
+steps for data analysis {-}
+- download data from 
+- read in data
+- calcualte daily total steps 
+- plot histogram of total styeps
+ 
+```{r, echo=T, eval=T} 
+
+  # readin data
+  setwd("C:\\Users\\fgao1\\OneDrive\\Desktop\\scc_training_2021\\")
+  getwd()
+  gao1<-read.csv("activity.csv", header=T)
+  names(gao1)
+
+  # total steps by days
+  date.list<-unique(gao1$date)
+  n.date<- length(date.list)
+  sum.steps<-rep(NA, n.date)
+
+  for (i in 1:n.date) {
+     date.i<-date.list[i]
+     step.i<-gao1[gao1$date==date.i, "steps"]
+     sum.steps[i]<-sum(step.i, na.rm=T)
+  }
+
+  hist(sum.steps, main="total daily steps")
+ 
+   # mean steps by interval
+  int.list<-unique(gao1$interval)
+  n.int<- length(int.list)
+  mean.steps<-rep(NA, n.int)
+
+  for (i in 1:n.int) {
+     int.i<-int.list[i]
+     step.i<-gao1[gao1$interval==int.i, "steps"]
+     mean.steps[i]<-mean(step.i, na.rm=T)
+  }
+
+  hist(mean.steps, main="mean steps by intervals")
+  
+```
