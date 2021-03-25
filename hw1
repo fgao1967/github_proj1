@@ -6,11 +6,7 @@ date: March 22, 2021
 output: html_document
 ---
 
-steps for data analysis {-}
-- download data from 
-- read in data
-- calcualte daily total steps 
-- plot histogram of total styeps
+
  
 ```{r, echo=T, eval=T} 
 
