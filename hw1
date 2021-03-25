@@ -6,8 +6,6 @@ date: March 22, 2021
 output: html_document
 ---
 
-
-
 ## Loading and preprocessing the data
  
 ```{r, echo=T, eval=T} 
