@@ -7,6 +7,8 @@ output: html_document
 ---
 
 
+
+## Loading and preprocessing the data
  
 ```{r, echo=T, eval=T} 
 
@@ -15,20 +17,35 @@ output: html_document
   getwd()
   gao1<-read.csv("activity.csv", header=T)
   names(gao1)
+ 
+ ```
+
+## What is mean total number of steps taken per day?
+
+ ```{r, echo=T, eval=T} 
 
   # total steps by days
   date.list<-unique(gao1$date)
   n.date<- length(date.list)
   sum.steps<-rep(NA, n.date)
+  mean.steps<-rep(NA, n.date)
 
   for (i in 1:n.date) {
      date.i<-date.list[i]
      step.i<-gao1[gao1$date==date.i, "steps"]
      sum.steps[i]<-sum(step.i, na.rm=T)
+     mean.steps[i]<-mean(step.i, na.rm=T)
   }
 
   hist(sum.steps, main="total daily steps")
+  hist(mean.steps, main="mean steps by intervals")
+ ```
  
+## What is the average daily activity pattern?
+
+
+ ```{r, echo=T, eval=T} 
+
    # mean steps by interval
   int.list<-unique(gao1$interval)
   n.int<- length(int.list)
@@ -40,6 +57,6 @@ output: html_document
      mean.steps[i]<-mean(step.i, na.rm=T)
   }
 
-  hist(mean.steps, main="mean steps by intervals")
+  hist(mean.steps, main="mean daily pattern ")
   
 ```
